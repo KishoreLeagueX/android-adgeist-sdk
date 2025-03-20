@@ -1,5 +1,6 @@
 jdk:
   - openjdk17
-
-install:
+build:
   - ./gradlew :adgeistcreatives:assembleRelease
+install:
+  - ./gradlew :adgeistcreatives:publishToMavenLocal
