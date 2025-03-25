@@ -10,7 +10,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import com.androidadgeistsdk.databinding.ActivityMainBinding
-import com.adgeistcreatives.LoadAd
+import com.adgeistcreatives.AdGeistSDK
+import android.util.Log
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,12 +21,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val Ad = LoadAd(this)
-
-        Ad.loadAd("Hello from adgeist creatives Library!------------------------------------", "yourPublisherId") { adData ->
-            if (adData != null) {
-            } else {
-            }
+        // Initialize AdGeistSDK
+        val adGeist = AdGeistSDK.initialize(applicationContext)
+    
+        // Create LoadAd instance
+        val getAd = adGeist.getCreative()
+    
+        getAd.fetchCreative("67c99c7a34929568f405e7ff", "67a056c63205fce2290d1cda") { adData ->
+          if (adData != null) {
+            Log.d("MyActivity of app module", "${adData}")
+          } else {
+          }
         }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
