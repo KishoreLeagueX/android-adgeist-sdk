@@ -18,4 +18,8 @@ class AdGeistSDK private constructor(private val context: Context) {
     fun getCreative(): FetchCreative {
         return FetchCreative(context, fingerprintGenerator)
     }
+
+    fun postCreativeAnalytics(): CreativeAnalytics {
+        return CreativeAnalytics(context, fingerprintGenerator)
+    }
 }

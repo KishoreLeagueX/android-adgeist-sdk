@@ -34,6 +34,15 @@ class MainActivity : AppCompatActivity() {
           }
         }
 
+        val postAnalytics = adGeist.postCreativeAnalytics()
+
+        postAnalytics.sendTrackingData("67dd0dca83189049e16b02f6", "67c99c7a34929568f405e7ff", "67a056c63205fce2290d1cda", "click") { adData ->
+            if (adData != null) {
+              Log.d("MyActivity of app module", "${adData}")
+            } else {
+            }
+          }
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
